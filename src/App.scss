@@ -1,0 +1,81 @@
+$width: 350px;
+$indents: 10px 15px 20px;
+
+.main {
+  display: flex;
+}
+
+.add-form {
+  width: $width;
+  padding: 10px 20px;
+  margin: $indents;
+  border: 2px solid rgb(199, 196, 196);
+  border-radius: 5px;
+  background-color: rgb(235, 232, 232);
+}
+
+.add-field {
+  padding-bottom: 15px;
+}
+
+.contacts {
+  &-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid grey;
+    background-color: rgb(216, 225, 231);
+  }
+
+  &-list {
+    width: $width;
+    min-height: 400px;
+    padding: 10px 10px;
+    margin: $indents;
+    border: 2px solid rgb(199, 196, 196);
+    border-radius: 5px;
+    background-color: rgb(235, 232, 232);
+
+    &-buttons {
+      min-width: 100px;
+      flex-shrink: 0;
+    }
+
+    &-button {
+      margin-left: 10px;
+      border-radius: 2px;
+      background-color: rgb(200, 226, 230);
+
+      &:hover {
+        color: white;
+        background-color: rgb(162, 209, 247);
+      }
+    }
+  }
+}
+
+.contact-info {
+  width: $width;
+  padding: 10px 20px;
+  margin: $indents;
+  border: 2px solid rgb(199, 196, 196);
+  border-radius: 5px;
+  background-color: rgb(235, 232, 232);
+
+  &-list {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-key {
+    text-decoration: underline;
+    text-transform: uppercase;
+  }
+}
+
+.title {
+  margin: 10px 0 20px;
+  text-align: center;
+}
