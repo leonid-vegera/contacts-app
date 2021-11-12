@@ -43,7 +43,12 @@ function App() {
 
       {selectedId !== 0 && (
         <div className="main-right">
-          <ContactInfo contact={selectedPerson} />
+          <ContactInfo
+            contact={selectedPerson}
+            contacts={contacts}
+            setContacts={setContacts}
+            selectedId={selectedId}
+          />
         </div>
       )}
     </div>

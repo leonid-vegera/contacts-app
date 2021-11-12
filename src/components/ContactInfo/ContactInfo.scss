@@ -2,6 +2,7 @@
 
 .contact-info {
   width: $width;
+  min-height: 330px;
   padding: 10px 20px;
   margin: $indents;
   border: 2px solid rgb(199, 196, 196);
@@ -19,6 +20,29 @@
   }
 
   &-value {
+    display: flex;
+    justify-content: space-between;
     width: 65%;
+  }
+
+  &-remove {
+    display: inline-block;
+    margin-left: 5px;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &-inputs {
+    display: flex;
+    margin: 10px 0;
+    gap: 5px;
+  }
+
+  &-button {
+    position: relative;
+    left: 232px;
   }
 }
