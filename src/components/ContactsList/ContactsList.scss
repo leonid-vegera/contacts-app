@@ -1,0 +1,34 @@
+@import '../../utils/variables';
+
+.contacts {
+  &-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid grey;
+    background-color: rgb(216, 225, 231);
+  }
+
+  &-list {
+    width: $width;
+    min-height: 400px;
+    padding: 10px 10px;
+    margin: $indents;
+    border: 2px solid rgb(199, 196, 196);
+    border-radius: 5px;
+    background-color: rgb(235, 232, 232);
+
+    &-buttons {
+      min-width: 100px;
+      flex-shrink: 0;
+    }
+
+    &-button {
+      margin-left: 10px;
+      background-color: rgb(200, 226, 230);
+    }
+  }
+}
