@@ -11,4 +11,4 @@ Functional:
 Technologies used: React, SCSS
 
 
-[DEMO Link of Application] (https://leonid-vegera.github.io/contacts-app/)
+[DEMO Link of Application](https://leonid-vegera.github.io/contacts-app/)
