@@ -14,9 +14,8 @@
 
   &-list {
     width: $width;
-    min-height: 200px;
+    @extend %height;
     padding: 10px 20px;
-    margin: $indents;
     border: 2px solid rgb(199, 196, 196);
     border-radius: 5px;
     background-color: rgb(235, 232, 232);

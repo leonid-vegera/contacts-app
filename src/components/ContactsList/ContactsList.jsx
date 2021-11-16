@@ -14,61 +14,69 @@ export const ContactsList = ({ contacts, setSelectedId, selectedId, removeContac
   }
 
   return (
-    <div className="contacts-list">
-      <h2 className="title">Contacts</h2>
+    <div className="contacts-list main__form">
 
-      <input
-        className="contacts-input"
-        type="text"
-        name="query"
-        placeholder="Enter first letters to find contact"
-        value={query}
-        onChange={(event) => {
-          setQuery(event.target.value)
-        }}
-      />
+      {contacts.length < 1 ? (
+        <h2 className="title">No contacts</h2>
+      ) : (
+          <>
+            <h2 className="title">Contacts</h2>
 
-      {visibleContacts.map(contact => (
-        <div key={contact.id} className="contacts-item">
-          <strong>{contact.name.toUpperCase()}</strong>
-          <div className="contacts-list-buttons">
-
-            <button
-              type="button"
-              className="button contacts-list-button"
-              onClick={() => {
-                removeContact(contact.id)
+            <input
+              className="input contacts-input"
+              type="text"
+              name="query"
+              placeholder="Enter first letters to find contact"
+              value={query}
+              onChange={(event) => {
+                setQuery(event.target.value)
               }}
-              disabled={contact.id === selectedId}
-            >
-              Delete
-            </button>
+            />
 
-            {contact.id !== selectedId ? (
-              <button
-                type="button"
-                className="button contacts-list-button"
-                onClick={() => {
-                  setSelectedId(contact.id)
-                }}
-              >
-                Open
-              </button>
-            ) : (
-              <button
-                type="button"
-                className="button contacts-list-button"
-                onClick={() => {
-                  setSelectedId(0)
-                }}
-              >
-                Close
-              </button>
-            )}
+            {visibleContacts.map(contact => (
+              <div key={contact.id} className="contacts-item">
+                <strong>{contact.name.toUpperCase()}</strong>
+                <div className="contacts-list-buttons">
 
-          </div>
-        </div>
-      ))}
+                  <button
+                    type="button"
+                    className="button contacts-list-button"
+                    onClick={() => {
+                      removeContact(contact.id)
+                    }}
+                    disabled={contact.id === selectedId}
+                  >
+                    Delete
+                  </button>
+
+                  {contact.id !== selectedId ? (
+                    <button
+                      type="button"
+                      className="button contacts-list-button"
+                      onClick={() => {
+                        setSelectedId(contact.id)
+                      }}
+                    >
+                      View
+                    </button>
+                  ) : (
+                    <button
+                      type="button"
+                      className="button contacts-list-button"
+                      onClick={() => {
+                        setSelectedId(0)
+                      }}
+                    >
+                      Close
+                    </button>
+                  )}
+
+                </div>
+              </div>
+            ))}
+          </>
+      )}
+
     </div >
   )
 };

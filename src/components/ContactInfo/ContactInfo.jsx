@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Field } from '../Field';
 import './ContactInfo.scss';
 
 export const ContactInfo = ({ contact, contacts, setContacts, selectedId }) => {
@@ -30,37 +31,19 @@ export const ContactInfo = ({ contact, contacts, setContacts, selectedId }) => {
   }
 
   return (
-    <div className="contact-info">
+    <div className="contact-info main__form">
       <h2 className="title">Contact information</h2>
       {entries.map(item => (
         <section
           key={Math.random()}
           className="contact-info-list"
         >
-          <div className="contact-info-key">{item[0] !== 'id' ? item[0] : ''}</div>
-          <div className="contact-info-value">
-            <div>{item[0] !== 'id' ? item[1] : ''}</div>
-{/*             <span
-              title="click to delete"
-              className="contact-info-remove"
-              onClick={(selectedId) => {
-                let key = item[0];
-                setContacts(
-                  contacts.map(contact => {
-                    if (contact.id !== selectedId) {
-                      return contact;
-                    }
-                    return {
-                      ...contact,
-                      // delete contact['key'],
-                    }
-                  })
-                )
-              }}
-            >
-              {item[0] !== 'id' ? 'x' : ''}
-            </span> */}
-          </div>
+          <Field
+            setContacts={setContacts}
+            selectedId={selectedId}
+            contacts={contacts}
+            item={item}
+          />
         </section>
       ))}
       <hr></hr>
@@ -74,6 +57,7 @@ export const ContactInfo = ({ contact, contacts, setContacts, selectedId }) => {
             type="text"
             name="newField"
             placeholder="Enter note name"
+            className="input"
             value={newField}
             onChange={(event) => {
               setNewField(event.target.value);
@@ -84,6 +68,7 @@ export const ContactInfo = ({ contact, contacts, setContacts, selectedId }) => {
             type="text"
             name="newValue"
             placeholder="Enter note text"
+            className="input"
             value={newValue}
             onChange={(event) => {
               setNewValue(event.target.value);

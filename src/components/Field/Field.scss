@@ -1,0 +1,13 @@
+.field {
+
+  &-edit-button {
+    &:hover {
+      color: white;
+      background-color: rgb(62, 64, 100);
+    }
+  }
+
+  &-not-active {
+    display: none;
+  }
+}

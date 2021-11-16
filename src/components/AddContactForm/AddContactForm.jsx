@@ -3,14 +3,18 @@ import './AddContactForm.scss';
 
 export const AddContactForm = ({ setContacts, contacts }) => {
   const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+  const [number, setNumber] = useState('+380');
   const [email, setEmail] = useState('');
+  const [birthday, setBirthday] = useState('');
+  const [info, setInfo] = useState('');
 
-  const addContact = (name, number, email) => {
+  const addContact = (name, number, email, birthday, info) => {
     const newContact = {
       name,
       number,
       email,
+      birthday,
+      info,
       id: +new Date(),
     };
     setContacts(
@@ -22,76 +26,103 @@ export const AddContactForm = ({ setContacts, contacts }) => {
 
   const clearFields = () => {
     setName('');
-    setNumber('');
+    setNumber('+380');
     setEmail('');
+    setBirthday('');
+    setInfo('');
   }
 
   const submitHandler = (event) => {
     event.preventDefault();
-    addContact(name, number, email);
+    addContact(name, number, email, birthday, info);
     clearFields();
   }
 
   return (
     <form
-      className="add-form"
+      className="add-form main__form"
       onSubmit={submitHandler}
     >
       <h2 className="title">New contact form</h2>
-      <div className="add-field">
-        <label>
-          Person's name
-          <div>
-            <input
-              type="text"
-              name="name"
-              placeholder="Enter new name"
-              value={name}
-              onChange={(event) => {
-                setName(event.target.value)
-              }}
-              required
-            />
-          </div>
-        </label>
-      </div>
+      <label>
+        Person's name
+        <div className="add-field">
+          <input
+            type="text"
+            name="name"
+            placeholder="Enter full name"
+            className="input"
+            value={name}
+            onChange={(event) => {
+              setName(event.target.value)
+            }}
+            required
+          />
+        </div>
+      </label>
 
-      <div>
-        <label>
-          Person's phone number
-          <div className="add-field">
-            <input
-              type="tel"
-              // pattern="[0-9]{10}"
-              name="number"
-              placeholder="Enter phone number"
-              value={number}
-              onChange={(event) => {
-                setNumber(event.target.value)
-              }}
-            // required
-            />
-          </div>
-        </label>
-      </div>
+      <label>
+        Person's phone number
+        <div className="add-field">
+          <input
+            type="tel"
+            name="number"
+            placeholder="Enter phone number"
+            className="input"
+            value={number}
+            onChange={(event) => {
+              setNumber(event.target.value)
+            }}
+          />
+        </div>
+      </label>
 
-      <div>
-        <label>
-          Person's e-mail
-          <div className="add-field">
-            <input
-              type="email"
-              name="email"
-              placeholder="Enter e-mail"
-              value={email}
-              onChange={(event) => {
-                setEmail(event.target.value)
-              }}
-            // required
-            />
-          </div>
-        </label>
-      </div>
+      <label>
+        Person's e-mail
+        <div className="add-field">
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter e-mail"
+            className="input"
+            value={email}
+            onChange={(event) => {
+              setEmail(event.target.value)
+            }}
+          />
+        </div>
+      </label>
+
+      <label>
+        Person's birthday
+        <div className="add-field">
+          <input
+            type="date"
+            max="2011-01-01"
+            name="birthday"
+            className="input input-birthday"
+            value={birthday}
+            onChange={(event) => {
+              setBirthday(event.target.value)
+            }}
+          />
+        </div>
+      </label>
+
+      <label>
+        Person's information
+        <div className="add-field">
+          <textarea
+            name="info"
+            placeholder="Enter additional information"
+            className="input add-field-textarea"
+            value={info}
+            onChange={(event) => {
+              setInfo(event.target.value)
+            }}
+          />
+        </div>
+      </label>
 
       <div>
         <button
@@ -101,7 +132,6 @@ export const AddContactForm = ({ setContacts, contacts }) => {
           Add contact
         </button>
       </div>
-
     </form>
   );
 };

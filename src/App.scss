@@ -2,12 +2,24 @@
 
 .main {
   display: flex;
+  gap: $gap;
+  padding: 15px;
+  max-width: 1260px;
+
+  &__form {
+    min-width: 335px;
+  }
 }
 
 .button {
   height: 30px;
   font-weight: bold;
   border-radius: 7px;
+
+  &:hover {
+    opacity: 0.8;
+    box-shadow: 1px 2px 4px rgb(65, 63, 63);
+  }
 
   &:active {
     color: white;
@@ -20,9 +32,17 @@
   text-align: center;
 }
 
-input {
+.input {
   height: 35px;
   width: 100%;
   padding-left: 10px;
   border-radius: 5px;
+
+  &::placeholder{
+    font-family: 'Roboto';
+  }
+
+  &-birthday {
+    width: 45%;
+  }
 }

@@ -24,32 +24,25 @@ function App() {
 
   return (
     <div className="main">
-      <div className="main-left">
-        <AddContactForm
-          contacts={contacts}
-          setContacts={setContacts}
-        />
-        {contacts.length === 0 ? (
-          <h2 className="title">No contacts added yet</h2>
-        ) : (
-          <ContactsList
-            contacts={contacts}
-            setSelectedId={setSelectedId}
-            selectedId={selectedId}
-            removeContact={removeContact}
-          />
-        )}
-      </div>
+      <AddContactForm
+        contacts={contacts}
+        setContacts={setContacts}
+      />
+
+      <ContactsList
+        contacts={contacts}
+        setSelectedId={setSelectedId}
+        selectedId={selectedId}
+        removeContact={removeContact}
+      />
 
       {selectedId !== 0 && (
-        <div className="main-right">
-          <ContactInfo
-            contact={selectedPerson}
-            contacts={contacts}
-            setContacts={setContacts}
-            selectedId={selectedId}
-          />
-        </div>
+        <ContactInfo
+          contact={selectedPerson}
+          contacts={contacts}
+          setContacts={setContacts}
+          selectedId={selectedId}
+        />
       )}
     </div>
   );

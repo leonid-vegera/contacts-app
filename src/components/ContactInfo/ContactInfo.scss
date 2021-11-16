@@ -2,9 +2,8 @@
 
 .contact-info {
   width: $width;
-  min-height: 330px;
+  @extend %height;
   padding: 10px 20px;
-  margin: $indents;
   border: 2px solid rgb(199, 196, 196);
   border-radius: 5px;
   background-color: rgb(235, 232, 232);
@@ -12,6 +11,7 @@
   &-list {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 5px;
   }
 
   &-key {
@@ -19,10 +19,15 @@
     text-transform: uppercase;
   }
 
-  &-value {
+  &-string {
     display: flex;
     justify-content: space-between;
-    width: 65%;
+    width: 70%;
+  }
+
+  &-value {
+    overflow: hidden;
+    cursor: pointer;
   }
 
   &-remove {
@@ -39,10 +44,5 @@
     display: flex;
     margin: 10px 0;
     gap: 5px;
-  }
-
-  &-button {
-    position: relative;
-    left: 232px;
   }
 }
