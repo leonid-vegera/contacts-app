@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { useContext } from 'react/cjs/react.development';
+import React, { useState, useContext } from 'react';
 import { ContactsContext } from '../../utils/ContactsContext';
 import './ContactsList.scss';
 
@@ -66,7 +65,7 @@ export const ContactsList = () => {
                   ) : (
                     <button
                       type="button"
-                      className="button contacts-list-button"
+                        className="button contacts-list-button contacts-list-button-active"
                       onClick={() => {
                         selectId(0)
                       }}
