@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
+import { useContext } from 'react/cjs/react.development';
+import { ContactsContext } from '../../utils/ContactsContext';
 import './ContactsList.scss';
 
-export const ContactsList = ({ contacts, setSelectedId, selectedId, removeContact }) => {
+export const ContactsList = () => {
+  const { contacts, selectedId, selectId, removeContact } = useContext(ContactsContext);
+
   const [query, setQuery] = useState('');
 
   const newQuery = query.toLocaleLowerCase();
@@ -54,7 +58,7 @@ export const ContactsList = ({ contacts, setSelectedId, selectedId, removeContac
                       type="button"
                       className="button contacts-list-button"
                       onClick={() => {
-                        setSelectedId(contact.id)
+                        selectId(contact.id)
                       }}
                     >
                       View
@@ -64,7 +68,7 @@ export const ContactsList = ({ contacts, setSelectedId, selectedId, removeContac
                       type="button"
                       className="button contacts-list-button"
                       onClick={() => {
-                        setSelectedId(0)
+                        selectId(0)
                       }}
                     >
                       Close

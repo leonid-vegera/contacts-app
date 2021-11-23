@@ -1,22 +1,26 @@
 import React, { useState } from 'react';
+import { useContext } from 'react/cjs/react.development';
+import { ContactsContext } from '../../utils/ContactsContext';
 import { Field } from '../Field';
 import './ContactInfo.scss';
 
-export const ContactInfo = ({ contact, contacts, setContacts, selectedId }) => {
+export const ContactInfo = () => {
   const [newField, setNewField] = useState('');
   const [newValue, setNewValue] = useState('');
 
+  const { selectedContact } = useContext(ContactsContext);
+
   let entries = null;
-  if (!contact) {
+  if (!selectedContact) {
     return;
   }
-  entries = Object.entries(contact);
+  entries = Object.entries(selectedContact);
 
   const addField = (newNote, newValue) => {
     const newSection = {
       [newNote]: newValue,
     };
-    Object.assign(contact, newSection)
+    Object.assign(selectedContact, newSection)
   }
 
   const clearFields = () => {
@@ -39,9 +43,6 @@ export const ContactInfo = ({ contact, contacts, setContacts, selectedId }) => {
           className="contact-info-list"
         >
           <Field
-            setContacts={setContacts}
-            selectedId={selectedId}
-            contacts={contacts}
             item={item}
           />
         </section>

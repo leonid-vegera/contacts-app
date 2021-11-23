@@ -1,28 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { ContactsContext } from '../../utils/ContactsContext';
 import './AddContactForm.scss';
 
-export const AddContactForm = ({ setContacts, contacts }) => {
+export const AddContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('+380');
   const [email, setEmail] = useState('');
   const [birthday, setBirthday] = useState('');
   const [info, setInfo] = useState('');
 
-  const addContact = (name, number, email, birthday, info) => {
-    const newContact = {
-      name,
-      number,
-      email,
-      birthday,
-      info,
-      id: +new Date(),
-    };
-    setContacts(
-      [...contacts,
-        newContact
-      ]
-    )
-  }
+  const { addContact } = useContext(ContactsContext);
+
+  const newContact = {
+    name,
+    number,
+    email,
+    birthday,
+    info,
+    id: +new Date(),
+  };
 
   const clearFields = () => {
     setName('');
@@ -34,7 +30,7 @@ export const AddContactForm = ({ setContacts, contacts }) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    addContact(name, number, email, birthday, info);
+    addContact(newContact);
     clearFields();
   }
 
@@ -52,6 +48,7 @@ export const AddContactForm = ({ setContacts, contacts }) => {
             name="name"
             placeholder="Enter full name"
             className="input"
+            autoFocus={true}
             value={name}
             onChange={(event) => {
               setName(event.target.value)
@@ -98,7 +95,7 @@ export const AddContactForm = ({ setContacts, contacts }) => {
         <div className="add-field">
           <input
             type="date"
-            max="2011-01-01"
+            max="2015-01-01"
             name="birthday"
             className="input input-birthday"
             value={birthday}

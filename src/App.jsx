@@ -1,16 +1,30 @@
 import React, { useState } from 'react';
 import './App.scss';
+import { useLocalStorage } from './utils/useLocalStarage';
 import { AddContactForm } from './components/AddContactForm';
 import { ContactsList } from './components/ContactsList';
 import { ContactInfo } from './components/ContactInfo';
+import { ContactsContext } from './utils/ContactsContext';
 
 function App() {
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useLocalStorage('contacts', []);
   const [selectedId, setSelectedId] = useState(0);
 
-  const selectedPerson = contacts.find(contact => (
+  const selectedContact = contacts.find(contact => (
     contact.id === selectedId
   ))
+
+  const addContact = (newContact) => {
+    setContacts(
+      [...contacts,
+        newContact
+      ]
+    )
+  }
+
+  const selectId = (id) => {
+    setSelectedId(id)
+  }
 
   const removeContact = (contactId) => {
     /* eslint-disable-next-line */
@@ -22,28 +36,28 @@ function App() {
     }
   }
 
+  const changeContact = (changedContact) => {
+    setContacts(changedContact)
+  }
+
   return (
     <div className="main">
-      <AddContactForm
-        contacts={contacts}
-        setContacts={setContacts}
-      />
+      <ContactsContext.Provider value={{
+        addContact: addContact,
+        contacts,
+        selectedContact,
+        selectedId,
+        selectId,
+        removeContact,
+        changeContact,
+      }}>
+        <AddContactForm />
+        <ContactsList />
 
-      <ContactsList
-        contacts={contacts}
-        setSelectedId={setSelectedId}
-        selectedId={selectedId}
-        removeContact={removeContact}
-      />
-
-      {selectedId !== 0 && (
-        <ContactInfo
-          contact={selectedPerson}
-          contacts={contacts}
-          setContacts={setContacts}
-          selectedId={selectedId}
-        />
-      )}
+        {selectedId !== 0 && (
+          <ContactInfo />
+        )}
+      </ContactsContext.Provider>
     </div>
   );
 }

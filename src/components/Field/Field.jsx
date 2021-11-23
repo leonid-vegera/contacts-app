@@ -1,8 +1,12 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { ContactsContext } from '../../utils/ContactsContext';
 import './Field.scss';
-import classNames from 'class-names';
+import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
-export const Field = ({ setContacts, selectedId, contacts, item }) => {
+export const Field = ({ item }) => {
+  const { changeContact, selectedId, contacts } = useContext(ContactsContext);
+
   const [value, setValue] = useState([item[1]]);
   const [isActive, setActive] = useState(false);
 
@@ -12,7 +16,7 @@ export const Field = ({ setContacts, selectedId, contacts, item }) => {
     if (!result) {
       setValue([item[1]])
     } else {
-      setContacts(
+      changeContact(
         contacts.map(contact => {
           if (contact.id !== selectedId) {
             return contact;
@@ -31,6 +35,7 @@ export const Field = ({ setContacts, selectedId, contacts, item }) => {
     changeNote(selectedId);
     setActive(false);
   }
+
   return (
     <>
       <div className="contact-info-key">{item[0] !== 'id' ? item[0] : ''}</div>
@@ -110,4 +115,8 @@ export const Field = ({ setContacts, selectedId, contacts, item }) => {
       </div>
     </>
   )
+}
+
+Field.propTypes = {
+  item: PropTypes.array.isRequired,
 }
