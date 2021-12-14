@@ -9,6 +9,7 @@ import { ContactsContext } from './utils/ContactsContext';
 function App() {
   const [contacts, setContacts] = useLocalStorage('contacts', []);
   const [selectedId, setSelectedId] = useState(0);
+  const [openForm, setOpenForm] = useState(false);
 
   const selectedContact = contacts.find(contact => (
     contact.id === selectedId
@@ -40,20 +41,28 @@ function App() {
     setContacts(changedContact)
   }
 
+  const contextValue = {
+    addContact: addContact,
+    contacts,
+    selectedContact,
+    selectedId,
+    selectId,
+    removeContact,
+    changeContact,
+    setOpenForm,
+  }
+
   return (
     <div className="main">
-      <ContactsContext.Provider value={{
-        addContact: addContact,
-        contacts,
-        selectedContact,
-        selectedId,
-        selectId,
-        removeContact,
-        changeContact,
-      }}>
-        <AddContactForm />
-        <ContactsList />
-
+      <ContactsContext.Provider value={contextValue}>
+        {(!openForm && selectedId === 0) && (
+          <ContactsList />
+        )}
+        
+        {openForm && (
+          <AddContactForm />
+        )}
+        
         {selectedId !== 0 && (
           <ContactInfo />
         )}

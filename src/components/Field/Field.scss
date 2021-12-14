@@ -1,13 +1,33 @@
 .field {
+  &-key {
+    text-decoration: underline;
+    text-transform: uppercase;
+  }
+
+  &-string {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    overflow-wrap: break-word;
+  }
+
+  &-value {
+    overflow: hidden;
+    cursor: pointer;
+  }
 
   &-edit-button {
+    margin-left: 4px;
+    border-radius: 3px;
+    background-color:rgb(215, 217, 247);
+
     &:hover {
       color: white;
       background-color: rgb(62, 64, 100);
     }
   }
 
-  &-not-active {
+  &-is-active {
     display: none;
   }
 }

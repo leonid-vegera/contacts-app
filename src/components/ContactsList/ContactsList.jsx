@@ -3,7 +3,7 @@ import { ContactsContext } from '../../utils/ContactsContext';
 import './ContactsList.scss';
 
 export const ContactsList = () => {
-  const { contacts, selectedId, selectId, removeContact } = useContext(ContactsContext);
+  const { contacts, selectedId, selectId, removeContact, setOpenForm } = useContext(ContactsContext);
 
   const [query, setQuery] = useState('');
 
@@ -38,9 +38,11 @@ export const ContactsList = () => {
 
             {visibleContacts.map(contact => (
               <div key={contact.id} className="contacts-item">
-                <strong>{contact.name.toUpperCase()}</strong>
+                <div className="contacts-list-title">
+                  <strong>{contact.name.toUpperCase()}</strong>
+                </div>
+                
                 <div className="contacts-list-buttons">
-
                   <button
                     type="button"
                     className="button contacts-list-button"
@@ -65,7 +67,7 @@ export const ContactsList = () => {
                   ) : (
                     <button
                       type="button"
-                        className="button contacts-list-button contacts-list-button-active"
+                      className="button contacts-list-button contacts-list-button-active"
                       onClick={() => {
                         selectId(0)
                       }}
@@ -79,6 +81,17 @@ export const ContactsList = () => {
             ))}
           </>
       )}
+
+      <button
+        type="button"
+        className="contacts-list-add-button"
+        onClick={() => {
+          setOpenForm(true)
+        }}
+
+      >
+        ADD CONTACT
+      </button>
 
     </div >
   )

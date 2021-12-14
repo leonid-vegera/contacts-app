@@ -38,11 +38,11 @@ export const Field = ({ item }) => {
 
   return (
     <>
-      <div className="contact-info-key">{item[0] !== 'id' ? item[0] : ''}</div>
-      <div className="contact-info-string">
+      <div className="field-key">{item[0] !== 'id' ? item[0] : ''}</div>
+      <div className="field-string">
         <div
           title="Click to change"
-          className={classNames("contact-info-value", {'field-not-active': isActive})}
+          className={classNames("field-value", {'field-is-active': isActive})}
           onClick={() => { setActive(!isActive) }}
         >
           {item[0] !== 'id' ? item[1] : ''}
@@ -70,48 +70,29 @@ export const Field = ({ item }) => {
                       setValue(event.target.value)
                     }}
                   />
-                  <button
-                    type="submit"
-                    className="field-edit-button"
-                  >
-                    Save changes
-                  </button>
+                  <section>
+                    <button
+                      type="submit"
+                      className="field-edit-button"
+                    >
+                      Save changes
+                    </button>
 
-                  <button
-                    type="button"
-                    className="field-edit-button"
-                    onClick={() => {
-                      setActive(false);
-                      setValue([item[1]]);
-                    }}
-                  >
-                    Cancel
-                  </button>
+                    <button
+                      type="button"
+                      className="field-edit-button"
+                      onClick={() => {
+                        setActive(false);
+                        setValue([item[1]]);
+                      }}
+                    >
+                      Cancel
+                    </button>
+                  </section>
                 </form>
               </div>
           )}
-
-          {/* <span
-            title="click to delete"
-            className="contact-info-remove"
-            onClick={() => {
-              setContacts(
-                contacts.map(contact => {
-                  if (contact.id !== selectedId) {
-                    return contact;
-                  }
-                  return {
-                    ...contact,
-                    [item[0]]: '',  //! completely to delete
-                  }
-                })
-              )
-            }}
-          >
-            {item[0] !== 'id' ? 'x' : ''}
-          </span> */}
         </div>
-
       </div>
     </>
   )

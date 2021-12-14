@@ -13,12 +13,18 @@
   }
 
   &-list {
-    width: $width;
+    position: relative;
     @extend %height;
     padding: 10px 20px;
     border: 2px solid rgb(199, 196, 196);
     border-radius: 5px;
     background-color: rgb(235, 232, 232);
+
+    &-title {
+      flex-grow: 1;
+      min-width: 145px;
+      overflow-wrap: break-word;
+    }
 
     &-buttons {
       min-width: 100px;
@@ -33,6 +39,27 @@
         color: white;
         background-color: rgb(62, 64, 100);
       }
+    }
+
+    &-add-button {
+      position: sticky;
+      bottom: 20px;
+      width: 80px;
+      height: 80px;
+      font-weight: bold;
+      border-radius: 25%;
+      color: white;
+      background-color: rgb(118, 143, 118);
+
+        &:hover {
+          opacity: 0.8;
+          box-shadow: 1px 2px 4px rgb(65, 63, 63);
+        }
+
+        &:active {
+          color: black;
+          background-color: rgb(162, 209, 247);
+        }
     }
   }
 

@@ -1,12 +1,32 @@
 @import '../../utils/variables';
 
 .add-form {
-  width: $width;
   @extend %height;
   padding: 10px 20px;
   border: 2px solid rgb(199, 196, 196);
   border-radius: 5px;
   background-color: rgb(235, 232, 232);
+
+  &-buttons {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &-button {
+    width: 100px;
+    height: 50px;
+    font-size: 14px;
+    text-transform: uppercase;
+
+    &:hover {
+      background-color: rgb(181, 240, 181);
+    }
+
+    &:active {
+      color: white;
+      background-color: rgb(162, 209, 247);
+    }
+  }
 }
 
 .add-field {

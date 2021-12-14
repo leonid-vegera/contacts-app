@@ -7,7 +7,7 @@ export const ContactInfo = () => {
   const [newField, setNewField] = useState('');
   const [newValue, setNewValue] = useState('');
 
-  const { selectedContact } = useContext(ContactsContext);
+  const { selectedContact, selectId } = useContext(ContactsContext);
 
   let entries = null;
   if (!selectedContact) {
@@ -76,12 +76,24 @@ export const ContactInfo = () => {
             required
           />
         </section>
-        <button
-          type="submit"
-          className="button contact-info-button"
-        >
-          Add note
-        </button>
+        <section className='contact-info-buttons'>
+          <button
+            type="submit"
+            className="button contact-info-button"
+          >
+            Add note
+          </button>
+          <button
+            type="button"
+            className="button contact-info-button"
+            onClick={() => {
+              selectId(0)
+            }}
+          >
+            Exit
+          </button>
+        </section>
+        
       </form>
 
     </div>

@@ -1,13 +1,13 @@
 @import './utils/variables';
 
 .main {
-  display: flex;
   gap: $gap;
   padding: 15px;
-  max-width: 1260px;
 
   &__form {
-    min-width: 335px;
+    margin: auto;
+    max-width: 500px;
+    min-width: $width;
   }
 }
 

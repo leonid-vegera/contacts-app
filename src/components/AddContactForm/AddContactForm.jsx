@@ -9,7 +9,7 @@ export const AddContactForm = () => {
   const [birthday, setBirthday] = useState('');
   const [info, setInfo] = useState('');
 
-  const { addContact } = useContext(ContactsContext);
+  const { addContact, setOpenForm } = useContext(ContactsContext);
 
   const newContact = {
     name,
@@ -32,6 +32,7 @@ export const AddContactForm = () => {
     event.preventDefault();
     addContact(newContact);
     clearFields();
+    setOpenForm(false);
   }
 
   return (
@@ -39,7 +40,7 @@ export const AddContactForm = () => {
       className="add-form main__form"
       onSubmit={submitHandler}
     >
-      <h2 className="title">New contact form</h2>
+      <h2 className="title">Add new contact</h2>
       <label>
         Person's name
         <div className="add-field">
@@ -121,14 +122,23 @@ export const AddContactForm = () => {
         </div>
       </label>
 
-      <div>
+      <section className='add-form-buttons'>
         <button
           type="submit"
-          className="button"
+          className="button add-form-button"
         >
           Add contact
         </button>
-      </div>
+        <button
+          type="button"
+          className="button add-form-button"
+          onClick={() => {
+            setOpenForm(false)
+          }}
+        >
+          Exit
+        </button>
+      </section>
     </form>
   );
 };
