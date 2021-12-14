@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/contacts-app/static/css/main.45b04f5a.chunk.css",
-    "main.js": "/contacts-app/static/js/main.ac368725.chunk.js",
-    "main.js.map": "/contacts-app/static/js/main.ac368725.chunk.js.map",
+    "main.css": "/contacts-app/static/css/main.b1427df6.chunk.css",
+    "main.js": "/contacts-app/static/js/main.5e152406.chunk.js",
+    "main.js.map": "/contacts-app/static/js/main.5e152406.chunk.js.map",
     "runtime-main.js": "/contacts-app/static/js/runtime-main.244b7d25.js",
     "runtime-main.js.map": "/contacts-app/static/js/runtime-main.244b7d25.js.map",
     "static/js/2.09b9a36a.chunk.js": "/contacts-app/static/js/2.09b9a36a.chunk.js",
     "static/js/2.09b9a36a.chunk.js.map": "/contacts-app/static/js/2.09b9a36a.chunk.js.map",
     "index.html": "/contacts-app/index.html",
-    "static/css/main.45b04f5a.chunk.css.map": "/contacts-app/static/css/main.45b04f5a.chunk.css.map",
+    "static/css/main.b1427df6.chunk.css.map": "/contacts-app/static/css/main.b1427df6.chunk.css.map",
     "static/js/2.09b9a36a.chunk.js.LICENSE.txt": "/contacts-app/static/js/2.09b9a36a.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.244b7d25.js",
     "static/js/2.09b9a36a.chunk.js",
-    "static/css/main.45b04f5a.chunk.css",
-    "static/js/main.ac368725.chunk.js"
+    "static/css/main.b1427df6.chunk.css",
+    "static/js/main.5e152406.chunk.js"
   ]
 }
